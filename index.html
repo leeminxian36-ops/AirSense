@@ -12,18 +12,35 @@
       font-family: Arial, sans-serif;
       background: linear-gradient(to bottom right, #dfefff, #f5f7fa);
       margin: 0;
-      padding: 30px;
       color: #333;
     }
 
+    nav {
+      background-color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
+      padding: 30px;
     }
 
     h1 {
       text-align: center;
-      font-size: 48px;
+      font-size: 52px;
       margin-bottom: 10px;
     }
 
@@ -37,16 +54,16 @@
       background: white;
       padding: 25px;
       border-radius: 20px;
-      margin-bottom: 25px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
 
     .status {
       text-align: center;
-      font-size: 28px;
+      font-size: 30px;
       font-weight: bold;
       color: orange;
-      margin-top: 10px;
+      margin: 20px 0;
     }
 
     .grid {
@@ -73,19 +90,17 @@
       font-weight: bold;
     }
 
-    select,
     textarea,
+    select,
+    input,
     button {
       width: 100%;
       padding: 12px;
+      margin-top: 12px;
       border-radius: 10px;
       border: 1px solid #ccc;
-      margin-top: 10px;
       font-size: 16px;
-    }
-
-    textarea {
-      resize: vertical;
+      box-sizing: border-box;
     }
 
     button {
@@ -93,12 +108,33 @@
       color: white;
       border: none;
       cursor: pointer;
-      transition: 0.3s;
       font-weight: bold;
+      transition: 0.3s;
     }
 
     button:hover {
       background-color: #3578c9;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border-bottom: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f0f4f8;
+    }
+
+    .tips-list li {
+      margin-bottom: 12px;
+      line-height: 1.6;
     }
 
     .warning {
@@ -106,7 +142,7 @@
       color: #856404;
       padding: 15px;
       border-radius: 12px;
-      margin-top: 15px;
+      margin-top: 20px;
       font-weight: bold;
     }
   </style>
@@ -114,15 +150,23 @@
 
 <body>
 
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#log">Log</a>
+    <a href="#history">History</a>
+    <a href="#tips">Tips</a>
+  </nav>
+
   <div class="container">
 
     <h1>AirSense</h1>
+
     <p class="subtitle">
       Smart Portable Air Quality Detector for Sensitive Individuals
     </p>
 
-    <div class="card">
-      <h2>Current Air Quality</h2>
+    <section id="home" class="card">
+      <h2>Current Air Status</h2>
 
       <div class="status">
         🟠 Elevated Risk
@@ -155,31 +199,72 @@
       <div class="warning">
         Avoid prolonged exposure in unfavorable environmental conditions.
       </div>
-    </div>
+    </section>
 
-    <div class="card">
-      <h2>Sensitivity Level</h2>
+    <section id="log" class="card">
+      <h2>Symptom & Trigger Log</h2>
+
+      <input type="date">
 
       <select>
-        <option>Mild</option>
-        <option>Moderate</option>
-        <option>Severe</option>
+        <option>Select Symptom</option>
+        <option>Sneezing</option>
+        <option>Blocked Nose</option>
+        <option>Itchy Nose</option>
+        <option>Runny Nose</option>
+        <option>Coughing</option>
       </select>
-    </div>
 
-    <div class="card">
-      <h2>Allergy Log</h2>
+      <select>
+        <option>Select Possible Trigger</option>
+        <option>Dust</option>
+        <option>High Humidity</option>
+        <option>Poor Ventilation</option>
+        <option>Weather Changes</option>
+      </select>
 
-      <textarea rows="5" placeholder="Record symptoms or possible triggers..."></textarea>
+      <textarea rows="5" placeholder="Additional notes..."></textarea>
 
-      <button>Save Log</button>
-    </div>
+      <button>Save Record</button>
+    </section>
+
+    <section id="history" class="card">
+      <h2>History</h2>
+
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Symptom</th>
+          <th>Trigger</th>
+        </tr>
+
+        <tr>
+          <td>19 May 2026</td>
+          <td>Sneezing</td>
+          <td>Dust</td>
+        </tr>
+
+        <tr>
+          <td>20 May 2026</td>
+          <td>Blocked Nose</td>
+          <td>High Humidity</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="tips" class="card">
+      <h2>Environmental Tips</h2>
+
+      <ul class="tips-list">
+        <li>Avoid staying too long in dusty environments.</li>
+        <li>High humidity may worsen nasal discomfort for sensitive individuals.</li>
+        <li>Clean indoor spaces regularly to reduce dust accumulation.</li>
+        <li>Wear a mask in heavily polluted or dusty areas.</li>
+      </ul>
+    </section>
 
   </div>
 
 </body>
 
 </html>
-
-
-
